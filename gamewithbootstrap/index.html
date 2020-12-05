@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameWithBootstrap</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+
+<body>
+    <div class="card md-4 mx-5 my-5 ">
+        <img src="pexels-mathias-pr-reding-5331915.jpg" alt="" class="card-img-top " style="max-height: 20rem; background-attachment: fixed; background-position: center;">
+        <div class="card-body text-center">
+            <form action="">
+                <div id="userWrap">
+                    <h1 id="msgHeading" class="bg-danger">Who will be the winner</h1>
+                    <hr>
+                    <label for="" class="h1">Enter Your Choose</label>
+                    <input type="text" name="userInput" id="userInput" class="form-control">
+                </div>
+                <div>
+                    <div id="cpuWrap">
+                        <label for="" class="h1">The Robot Choose</label>
+                        <span class="form-control" id="cpuResult" name="cpuResult"></span>
+                    </div>
+                    <button class="btn btn-info form-control" id="goBtn">Go!!!</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        //create function runTheMagic and add click event
+        document.getElementById('goBtn').onclick = function runTheMagic() {
+            //get user input
+            let userInput = document.getElementById('userInput').value,
+                cpuResult = document.getElementById('cpuResult'),
+                msgHeading = document.getElementById('msgResult'),
+                randomize = Math.random() * 100,
+                cpuChoice;
+
+            if (userInput === "Rock" || userInput === "Paper" || userInput === "Scissors") {
+                if (randomize > 0 && randomize < 33) {
+                    cpuChoice = "Rock"
+                } else if (randomize >= 34 && randomize < 66) {
+                    cpuChoice = "Paper"
+                } else {
+                    cpuChoice = 'Scissors'
+                }
+                cpuResult.innerHTML = cpuChoice
+
+                if (userInput === "Rock" && cpuChoice === "Paper") {
+                    msgHeading.innerHTML = "Paper covers Rock. You loose"
+                } else if (userInput === "Rock" && cpuChoice === "Scissors") {
+                    msgHeading.innerHTML = "Rock crushes Scissors. You win!!"
+                } else {
+                    alert('please type correct')
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>
